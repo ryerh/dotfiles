@@ -1,0 +1,5 @@
+{
+  "insecure-registries" : ["registry.xsky.com"],
+  "registry-mirrors": ["https://registry.docker-cn.com"],
+  "dns": ["119.29.29.29", "114.114.114.114"]
+}

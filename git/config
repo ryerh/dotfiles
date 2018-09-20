@@ -1,0 +1,70 @@
+[alias]
+  aa    = add    --all --verbose
+
+  bd    = branch --delete
+  bdf   = branch --delete --force
+  bdm   = "!bash ~/.config/git/scripts.sh bdm"
+  bdr   = push origin --delete
+
+  bl    = branch
+  ba    = branch --all
+  br    = branch --remotes
+  bdiff = "!bash ~/.config/git/scripts.sh bdiff"
+
+  ca    = commit --amend
+  cm    = commit --no-verify --message
+  csm   = commit --signoff --message
+
+  cln   = "!bash ~/.config/git/scripts.sh cln"
+
+  co    = checkout
+  cob   = checkout -b
+
+  confg = config -e --global
+  confl = config -e --local
+
+  csb   = clone    -b master --single-branch
+
+  fp    = fetch    -pv
+
+  lg    = "!bash ~/.config/git/scripts.sh lg"
+  adog  = log --all --decorate --oneline --graph
+
+  pl    = "!bash ~/.config/git/scripts.sh pl"
+  ps    = "!bash ~/.config/git/scripts.sh ps"
+  psf   = "!bash ~/.config/git/scripts.sh psf"
+
+  pr    = "!bash ~/.config/git/scripts.sh pr"
+
+  rank  = shortlog -sn --no-merges
+
+  st    = status -sb
+
+[color]
+  ui = 1
+
+[core]
+  editor = vim
+  quotepath = off
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  process = git-lfs filter-process
+  required = true
+  smudge = git-lfs smudge -- %f
+
+[push]
+  default = simple
+
+[user]
+  email = ryerh@live.com
+  name = ryerh
+
+[diff]
+  renameLimit = 10000
+
+[http "https://github.com"]
+  proxy = socks5://127.0.0.1:1080
+
+[https "https://github.com"]
+  proxy = socks5://127.0.0.1:1080

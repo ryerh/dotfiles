@@ -1,0 +1,10 @@
+#!/usr/bin/ssh
+#
+# configuration file order:
+#   ~/.ssh/config
+#   /etc/ssh/ssh_config
+
+Host *
+  GSSAPIAuthentication no
+  GSSAPIDelegateCredentials no
+  StrictHostKeyChecking no

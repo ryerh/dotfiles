@@ -1,0 +1,86 @@
+#!/bin/bash
+#
+# Setup bash environment.
+
+#------------------------------------------------------------------------------
+# Env settings
+#------------------------------------------------------------------------------
+
+# Ubuntu has ~/.local/bin by default, macOS does not
+export PATH="$HOME/.local/bin:$PATH"
+
+# Golang
+export GOPATH="$HOME/Developer/go"
+
+# Node
+export NODE_PATH="$HOME/.local/lib/node_modules"
+
+# Command prompt prefix
+export GIT_PS1_SHOWDIRTYSTATE=yes
+export PS1='\[\e[34m\]\w\[\e[35m\]$(__git_ps1 "(%s)")\[\e[36m\]\n└─ \[\e[31m\]\u\[\e[32m\]@\[\e[33m\]\h:\\$\[\e[m\] '
+#                     --          ------------------           -----          --          -          --- --        -
+
+# Editor
+export EDITOR=vim
+
+if [[ $(uname) == 'Darwin' ]]; then
+  # Homebrew bottles
+  export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.aliyun.com/homebrew/homebrew-bottles"
+
+  # http://www.oracle.com/technetwork/cn/java/javase/downloads/
+  # export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+else
+  # sudo apt install openjdk-8-jdk
+  export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+fi
+
+#------------------------------------------------------------------------------
+# Aliases settings
+#------------------------------------------------------------------------------
+
+# Built-in
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+alias egrep='egrep --color=auto'
+alias grep='grep --color=auto'
+
+# Customize
+alias cdev='cd ~/Developer'
+alias ctmp='cd $(mktemp -d)'
+alias search='grep -nirE --color=auto'
+
+# Proxy
+alias pon='export http_proxy=http://127.0.0.1:8123;export https_proxy=http://127.0.0.1:8123'
+alias poff='unset http_proxy;unset https_proxy'
+
+if [[ $(uname) == 'Darwin' ]]; then
+  alias ll='ls -alh'
+  alias ls='ls -GF'
+else
+  alias ll='ls -alh --color=auto --group-directories-first'
+  alias ls='ls --color=auto --group-directories-first'
+fi
+
+#------------------------------------------------------------------------------
+# Completion scripts
+#------------------------------------------------------------------------------
+
+# Bash completions for macOS
+if command -v brew > /dev/null; then
+  if [[ -f "$(brew --prefix)/etc/bash_completion" ]]; then
+    source "$(brew --prefix)/etc/bash_completion"
+  fi
+fi
+
+# Docker completions for macOS
+if [[ -d /Applications/Docker.app ]]; then
+  for f in $(ls /Applications/Docker.app/Contents/Resources/etc/*.bash-completion); do
+     source $f
+  done
+fi
+
+#------------------------------------------------------------------------------
+# The end
+#------------------------------------------------------------------------------

@@ -1,0 +1,5 @@
+# NPM per-user config file
+# @docs https://docs.npmjs.com/files/npmrc
+
+prefix=${HOME}/.local
+registry=https://registry.npm.taobao.org

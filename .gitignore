@@ -1,0 +1,14 @@
+.DS_Store
+
+pip/*
+!pip/pip.conf
+
+tmux/*
+!tmux/personal.tmux
+!tmux/plugins
+!tmux/tmux.conf
+tmux/plugins/*
+!tmux/plugins/tmux-personal/
+
+vim/*
+!vim/vimrc
